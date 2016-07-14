@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>田飞雨的 GitPage</title>
+  <title>DevOps-田飞雨</title>
   
   <link href="/atom.xml" rel="self"/>
   
@@ -9,7 +9,7 @@
   <id>http://www.tianfeiyu.com/</id>
   
   <author>
-    <name>tianfeiyu</name>
+    <name>田飞雨</name>
     
   </author>
   
