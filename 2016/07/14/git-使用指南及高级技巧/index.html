@@ -4,14 +4,21 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Archives: 2016 | Hexo</title>
+  <title>git 使用指南及高级技巧 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2016/index.html">
+  <meta name="description" content="github 详细操作 : https://github.com/lavor-zl/Github-Git
+git 高级教程： http://mp.weixin.qq.com/s?__biz=MzA3OTgyMDcwNg==&amp;amp;mid=2650625356&amp;amp;idx=1&amp;amp;sn=32e5a0550b08fab554edb5f31cfd54a5&amp;amp;scene=2&amp;amp;src">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git 使用指南及高级技巧">
+<meta property="og:url" content="http://yoursite.com/2016/07/14/git-使用指南及高级技巧/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="github 详细操作 : https://github.com/lavor-zl/Github-Git
+git 高级教程： http://mp.weixin.qq.com/s?__biz=MzA3OTgyMDcwNg==&amp;amp;mid=2650625356&amp;amp;idx=1&amp;amp;sn=32e5a0550b08fab554edb5f31cfd54a5&amp;amp;scene=2&amp;amp;src">
+<meta property="og:updated_time" content="2016-07-14T06:47:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="git 使用指南及高级技巧">
+<meta name="twitter:description" content="github 详细操作 : https://github.com/lavor-zl/Github-Git
+git 高级教程： http://mp.weixin.qq.com/s?__biz=MzA3OTgyMDcwNg==&amp;amp;mid=2650625356&amp;amp;idx=1&amp;amp;sn=32e5a0550b08fab554edb5f31cfd54a5&amp;amp;scene=2&amp;amp;src">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -193,76 +200,141 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-git-使用指南及高级技巧" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/07/14/git-使用指南及高级技巧/" class="archive-article-date">
-  	<time datetime="2016-07-14T06:46:20.000Z" itemprop="datePublished">Jul 14</time>
+    <div class="article-meta">
+      <a href="/2016/07/14/git-使用指南及高级技巧/" class="article-date">
+  	<time datetime="2016-07-14T06:46:20.000Z" itemprop="datePublished">2016-07-14</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/14/git-使用指南及高级技巧/">git 使用指南及高级技巧</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      git 使用指南及高级技巧
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
 
-        </div>
         <div class="clearfix"></div>
-    </header>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>github 详细操作 : <a href="https://github.com/lavor-zl/Github-Git" target="_blank" rel="external">https://github.com/lavor-zl/Github-Git</a></p>
+<p>git 高级教程： <a href="http://mp.weixin.qq.com/s?__biz=MzA3OTgyMDcwNg==&amp;mid=2650625356&amp;idx=1&amp;sn=32e5a0550b08fab554edb5f31cfd54a5&amp;scene=2&amp;srcid=0608JkN5HRfOV5POEyd2tClo&amp;from=timeline&amp;isappinstalled=0#wechat_redirect" target="_blank" rel="external">http://mp.weixin.qq.com/s?__biz=MzA3OTgyMDcwNg==&amp;mid=2650625356&amp;idx=1&amp;sn=32e5a0550b08fab554edb5f31cfd54a5&amp;scene=2&amp;srcid=0608JkN5HRfOV5POEyd2tClo&amp;from=timeline&amp;isappinstalled=0#wechat_redirect</a></p>
+<p>Q:配置用户名和密码</p>
+<pre><code>git config --global user.name &quot;strugglingyouth&quot;
+git config --global user.email &quot;630441839@qq.com&quot;
+git config --list
+git config --global color.ui true
+</code></pre><p>Q: 绑定远程分支，不用每次pull或push时指定</p>
+<pre><code>git config branch.master.remote origin
+git config branch.master.merge refs/heads/master
+</code></pre><p>Q:合并远程分支到当前分支</p>
+<pre><code>git merge origin/master 
+# 或者
+$ git rebase origin/master
+</code></pre><p>Q:删除追踪状态的文件</p>
+<pre><code>git rm --cached *.pyc
+</code></pre><p>Q:</p>
+<p>今天使用girhub的pages功能搞了一个blog,用了github提供的主题,当我将其git clone下来的时候,出现:</p>
+<pre><code># On branch master
+# Changed but not updated:
+    #   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+    #   (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+    #
+    #       modified:   fonts/OpenSans-Bold-webfont.eot
+    #       modified:   fonts/OpenSans-Bold-webfont.svg
+    #       modified:   fonts/OpenSans-Bold-webfont.ttf
+    #       modified:   fonts/OpenSans-Bold-webfont.woff
+    #       modified:   fonts/OpenSans-BoldItalic-webfont.eot
+    #       modified:   fonts/OpenSans-BoldItalic-webfont.svg
+    #       modified:   fonts/OpenSans-BoldItalic-webfont.ttf
+    #       modified:   fonts/OpenSans-BoldItalic-webfont.woff
+    #       modified:   fonts/OpenSans-Italic-webfont.eot
+    #       modified:   fonts/OpenSans-Italic-webfont.svg
+    #       modified:   fonts/OpenSans-Italic-webfont.ttf
+    #       modified:   fonts/OpenSans-Italic-webfont.woff
+    #       modified:   fonts/OpenSans-Regular-webfont.eot
+    #       modified:   fonts/OpenSans-Regular-webfont.svg
+</code></pre>
+      
+    </div>
+    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/07/14/my-first-article/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">my first article</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/07/14/my-first-article/" class="archive-article-date">
-  	<time datetime="2016-07-14T04:12:46.000Z" itemprop="datePublished">Jul 14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/14/my-first-article/">my first article</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-    
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="git-使用指南及高级技巧" data-title="git 使用指南及高级技巧" data-url="http://yoursite.com/2016/07/14/git-使用指南及高级技巧/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 </div>
       <footer id="footer">
@@ -288,8 +360,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false

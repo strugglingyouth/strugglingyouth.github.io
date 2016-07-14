@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-07-14T02:24:05.000Z</updated>
+  <updated>2016-07-14T06:47:31.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,26 +16,54 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2016/07/14/hello-world/"/>
-    <id>http://yoursite.com/2016/07/14/hello-world/</id>
-    <published>2016-07-14T06:35:42.427Z</published>
-    <updated>2016-07-14T02:24:05.000Z</updated>
+    <title>git 使用指南及高级技巧</title>
+    <link href="http://yoursite.com/2016/07/14/git-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%E5%8F%8A%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/"/>
+    <id>http://yoursite.com/2016/07/14/git-使用指南及高级技巧/</id>
+    <published>2016-07-14T06:46:20.000Z</published>
+    <updated>2016-07-14T06:47:31.000Z</updated>
     
-    <content type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Run-server&quot;&gt;&lt;a href=&quot;#Run-server&quot; class=&quot;headerlink&quot; title=&quot;Run server&quot;&gt;&lt;/a&gt;Run server&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ hexo server&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/server.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Generate-static-files&quot;&gt;&lt;a href=&quot;#Generate-static-files&quot; class=&quot;headerlink&quot; title=&quot;Generate static files&quot;&gt;&lt;/a&gt;Generate static files&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ hexo generate&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/generating.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Generating&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Deploy-to-remote-sites&quot;&gt;&lt;a href=&quot;#Deploy-to-remote-sites&quot; class=&quot;headerlink&quot; title=&quot;Deploy to remote sites&quot;&gt;&lt;/a&gt;Deploy to remote sites&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ hexo deploy&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/deployment.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
-</content>
+    <content type="html">&lt;p&gt;github 详细操作 : &lt;a href=&quot;https://github.com/lavor-zl/Github-Git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/lavor-zl/Github-Git&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;git 高级教程： &lt;a href=&quot;http://mp.weixin.qq.com/s?__biz=MzA3OTgyMDcwNg==&amp;amp;mid=2650625356&amp;amp;idx=1&amp;amp;sn=32e5a0550b08fab554edb5f31cfd54a5&amp;amp;scene=2&amp;amp;srcid=0608JkN5HRfOV5POEyd2tClo&amp;amp;from=timeline&amp;amp;isappinstalled=0#wechat_redirect&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://mp.weixin.qq.com/s?__biz=MzA3OTgyMDcwNg==&amp;amp;mid=2650625356&amp;amp;idx=1&amp;amp;sn=32e5a0550b08fab554edb5f31cfd54a5&amp;amp;scene=2&amp;amp;srcid=0608JkN5HRfOV5POEyd2tClo&amp;amp;from=timeline&amp;amp;isappinstalled=0#wechat_redirect&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Q:配置用户名和密码&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git config --global user.name &amp;quot;strugglingyouth&amp;quot;
+git config --global user.email &amp;quot;630441839@qq.com&amp;quot;
+git config --list
+git config --global color.ui true
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Q: 绑定远程分支，不用每次pull或push时指定&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git config branch.master.remote origin
+git config branch.master.merge refs/heads/master
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Q:合并远程分支到当前分支&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git merge origin/master 
+# 或者
+$ git rebase origin/master
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Q:删除追踪状态的文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git rm --cached *.pyc
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Q:&lt;/p&gt;
+&lt;p&gt;今天使用girhub的pages功能搞了一个blog,用了github提供的主题,当我将其git clone下来的时候,出现:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# On branch master
+# Changed but not updated:
+    #   (use &amp;quot;git add &amp;lt;file&amp;gt;...&amp;quot; to update what will be committed)
+    #   (use &amp;quot;git checkout -- &amp;lt;file&amp;gt;...&amp;quot; to discard changes in working directory)
+    #
+    #       modified:   fonts/OpenSans-Bold-webfont.eot
+    #       modified:   fonts/OpenSans-Bold-webfont.svg
+    #       modified:   fonts/OpenSans-Bold-webfont.ttf
+    #       modified:   fonts/OpenSans-Bold-webfont.woff
+    #       modified:   fonts/OpenSans-BoldItalic-webfont.eot
+    #       modified:   fonts/OpenSans-BoldItalic-webfont.svg
+    #       modified:   fonts/OpenSans-BoldItalic-webfont.ttf
+    #       modified:   fonts/OpenSans-BoldItalic-webfont.woff
+    #       modified:   fonts/OpenSans-Italic-webfont.eot
+    #       modified:   fonts/OpenSans-Italic-webfont.svg
+    #       modified:   fonts/OpenSans-Italic-webfont.ttf
+    #       modified:   fonts/OpenSans-Italic-webfont.woff
+    #       modified:   fonts/OpenSans-Regular-webfont.eot
+    #       modified:   fonts/OpenSans-Regular-webfont.svg
+&lt;/code&gt;&lt;/pre&gt;</content>
     
     <summary type="html">
     
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      &lt;p&gt;github 详细操作 : &lt;a href=&quot;https://github.com/lavor-zl/Github-Git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/lavor-zl/Github-Git&lt;/a&gt;&lt;
     
     </summary>
     

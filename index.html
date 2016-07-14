@@ -195,11 +195,11 @@
 
       <div class="body-wrap">
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-git-使用指南及高级技巧" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/07/14/hello-world/" class="article-date">
-  	<time datetime="2016-07-14T06:35:42.427Z" itemprop="datePublished">2016-07-14</time>
+      <a href="/2016/07/14/git-使用指南及高级技巧/" class="article-date">
+  	<time datetime="2016-07-14T06:46:20.000Z" itemprop="datePublished">2016-07-14</time>
 </a>
     </div>
   
@@ -212,7 +212,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/14/hello-world/">Hello World</a>
+      <a class="article-title" href="/2016/07/14/git-使用指南及高级技巧/">git 使用指南及高级技巧</a>
     </h1>
   
 
@@ -221,16 +221,44 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
+        <p>github 详细操作 : <a href="https://github.com/lavor-zl/Github-Git" target="_blank" rel="external">https://github.com/lavor-zl/Github-Git</a></p>
+<p>git 高级教程： <a href="http://mp.weixin.qq.com/s?__biz=MzA3OTgyMDcwNg==&amp;mid=2650625356&amp;idx=1&amp;sn=32e5a0550b08fab554edb5f31cfd54a5&amp;scene=2&amp;srcid=0608JkN5HRfOV5POEyd2tClo&amp;from=timeline&amp;isappinstalled=0#wechat_redirect" target="_blank" rel="external">http://mp.weixin.qq.com/s?__biz=MzA3OTgyMDcwNg==&amp;mid=2650625356&amp;idx=1&amp;sn=32e5a0550b08fab554edb5f31cfd54a5&amp;scene=2&amp;srcid=0608JkN5HRfOV5POEyd2tClo&amp;from=timeline&amp;isappinstalled=0#wechat_redirect</a></p>
+<p>Q:配置用户名和密码</p>
+<pre><code>git config --global user.name &quot;strugglingyouth&quot;
+git config --global user.email &quot;630441839@qq.com&quot;
+git config --list
+git config --global color.ui true
+</code></pre><p>Q: 绑定远程分支，不用每次pull或push时指定</p>
+<pre><code>git config branch.master.remote origin
+git config branch.master.merge refs/heads/master
+</code></pre><p>Q:合并远程分支到当前分支</p>
+<pre><code>git merge origin/master 
+# 或者
+$ git rebase origin/master
+</code></pre><p>Q:删除追踪状态的文件</p>
+<pre><code>git rm --cached *.pyc
+</code></pre><p>Q:</p>
+<p>今天使用girhub的pages功能搞了一个blog,用了github提供的主题,当我将其git clone下来的时候,出现:</p>
+<pre><code># On branch master
+# Changed but not updated:
+    #   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+    #   (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+    #
+    #       modified:   fonts/OpenSans-Bold-webfont.eot
+    #       modified:   fonts/OpenSans-Bold-webfont.svg
+    #       modified:   fonts/OpenSans-Bold-webfont.ttf
+    #       modified:   fonts/OpenSans-Bold-webfont.woff
+    #       modified:   fonts/OpenSans-BoldItalic-webfont.eot
+    #       modified:   fonts/OpenSans-BoldItalic-webfont.svg
+    #       modified:   fonts/OpenSans-BoldItalic-webfont.ttf
+    #       modified:   fonts/OpenSans-BoldItalic-webfont.woff
+    #       modified:   fonts/OpenSans-Italic-webfont.eot
+    #       modified:   fonts/OpenSans-Italic-webfont.svg
+    #       modified:   fonts/OpenSans-Italic-webfont.ttf
+    #       modified:   fonts/OpenSans-Italic-webfont.woff
+    #       modified:   fonts/OpenSans-Regular-webfont.eot
+    #       modified:   fonts/OpenSans-Regular-webfont.svg
+</code></pre>
       
     </div>
     
