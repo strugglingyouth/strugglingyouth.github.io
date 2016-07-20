@@ -177,7 +177,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -187,7 +187,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -240,6 +240,126 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/17/常用Linux系统Debug命令/" itemprop="url">
+                  常用Linux系统Debug命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-07-17T18:49:58+08:00" content="2016-07-17">
+              2016-07-17
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1、查看TCP连接状态<br>netstat -nat |awk ‘{print $6}’|sort|uniq -c|sort -rn<br>netstat -n | awk ‘/^tcp/ {++S[$NF]};END {for(a in S) print a, S[a]}’<br>netstat -n | awk ‘/^tcp/ {++state[$NF]}; END {for(key in state) print key,”\t”,state[key]}’<br>netstat -n | awk ‘/^tcp/ {++arr[$NF]};END {for(k in arr) print k,”\t”,arr[k]}’<br>netstat -n |awk ‘/^tcp/ {print $NF}’|sort|uniq -c|sort -rn<br>netstat -ant | awk ‘{print $NF}’ | grep -v ‘[a-z]’ | sort | uniq -c<br>netstat -nat |awk ‘{print $6}’|sort|uniq -c|sort -rn<br>netstat -n | awk ‘/^tcp/ {++S[$NF]};END {for(a in S) print a, S[a]}’<br>netstat -n | awk ‘/^tcp/ {++state[$NF]}; END {for(key in state) print key,”\t”,state[key]}’<br>netstat -n | awk ‘/^tcp/ {++arr[$NF]};END {for(k in arr) print k,”\t”,arr[k]}’<br>netstat -n |awk ‘/^tcp/ {print $NF}’|sort|uniq -c|sort -rn<br>netstat -ant | awk ‘{print $NF}’ | grep -v ‘[a-z]’ | sort | uniq -c</p>
+<p> 2、查找请求80端口最多的20个IP连接<br> netstat -anlp|grep 80|grep tcp|awk ‘{print $5}’|awk -F: ‘{print $1}’|sort|uniq -c|sort -nr|head -n20<br> netstat -ant |awk ‘/:80/{split($5,ip,”:”);++A[ip[1]]}END{for(i in A) print A,i}’ |sort -rn|head -n20<br> tcpdump -i eth0 -tnn dst port 80 -c 1000 | awk -F”.” ‘{print $1”.”$2”.”$3”.”$4}’ | sort | uniq -c | sort -nr |head -n 20</p>
+<p> 3、查找较多time_wait连接<br> netstat -n|grep TIME_WAIT|awk ‘{print $5}’|sort|uniq -c|sort -rn|head -n20</p>
+<p> 4、找查较多的SYN连接<br> netstat -an | grep SYN | awk ‘{print $5}’ | awk -F: ‘{print $1}’ | sort | uniq -c | sort -nr | more</p>
+<p> 5、根据端口列进程<br> netstat -ntlp | grep 80 | awk ‘{print $7}’ | cut -d/ -f1</p>
+<p> 6、获取Web访问前10位的ip地址<br> cat access.log|awk ‘{print $1}’|sort|uniq -c|sort -nr|head -n 10<br> cat access.log|awk ‘{counts[$(11)]+=1}; END {for(url in counts) print counts[url], url}’</p>
+<p> ​7、访问次数最多的文件或页面,取前20<br> cat access.log|awk ‘{print $11}’|sort|uniq -c|sort -nr|head -n 20</p>
+<p> 8、列出传输最大的几个rar文件<br> cat access.log|awk ‘{print $11}’|sort|uniq -c|sort -nr|head -n 20</p>
+<p>  9、列出输出大于200000byte(约200kb)的rar文件以及对应文件发生次数<br>  cat access.log |awk ‘($10 &gt; 200000 &amp;&amp; $7~/.rar/){print $7}’|sort -n|uniq -c|sort -nr|head -n 100</p>
+<p>  10、如果日志最后一列记录的是页面文件传输时间，则有列出到客户端最耗时的页面<br>  cat access.log |awk ‘($7~/.php/){print $NF “ “ $1 “ “ $4 “ “ $7}’|sort -nr|head -n 100<br>  cat access.log |awk ‘($7~/.php/){print $NF “ “ $1 “ “ $4 “ “ $7}’|sort -nr|head -n 100</p>
+<p>  11、列出最最耗时的页面(超过60秒的)的以及对应页面发生次数<br>  cat access.log |awk ‘($NF &gt; 60 &amp;&amp; $7~/.php/){print $7}’|sort -n|uniq -c|sort -nr|head -n 100</p>
+<p>   12、列出传输时间超过 30 秒的文件<br>   cat access.log |awk ‘($NF &gt; 30){print $7}’|sort -n|uniq -c|sort -nr|head -n 20</p>
+<p>   13、统计网站流量（G)<br>   cat access.log |awk ‘{sum+=$10} END {print sum/1024/1024/1024}’</p>
+<p>   14、统计404的连接<br>   awk ‘($9 ~/404/)’ access.log | awk ‘{print $9,$7}’ | sort</p>
+<p>   15、统计http status<br>   cat access.log |awk ‘{counts[$(9)]+=1}; END {for(code in counts) print code, counts[code]}’<br>   cat access.log |awk ‘{print $9}’|sort|uniq -c|sort -rn</p>
+<p>   16、查看是哪些爬虫在抓取内容<br>   tcpdump -i eth0 -l -s 0 -w - dst port 80 | strings | grep -i user-agent | grep -i -E ‘bot|crawler|slurp|spider’</p>
+<pre><code>17、查看数据库执行的sql语句
+tcpdump -i eth0 -s 0 -l -w - dst port 3306 | strings | egrep -i &apos;SELECT|UPDATE|DELETE|INSERT|SET|COMMIT|ROLLBACK|CREATE|DROP|ALTER|CALL&apos;
+
+18、按域统计流量
+zcat squid_access.log.tar.gz| awk &apos;{print $10,$7}&apos; |awk &apos;BEGIN{FS=&quot;[ /]&quot;}{trfc[$4]+=$1}END{for(domain in trfc){printf &quot;%s\t%d\n&quot;,domain,trfc[domain]}}&apos;
+
+19、调试命令
+strace -p pid
+
+20、磁盘性能
+iostat -x 1 10
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/14/git-使用指南及高级技巧/" itemprop="url">
                   git 使用指南及高级技巧
                 </a>
@@ -253,7 +373,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-07-14T14:46:20+08:00" content="2016-07-14">
               2016-07-14
             </time>
@@ -389,8 +509,8 @@ $ git rebase origin/master
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">1</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -444,7 +564,7 @@ $ git rebase origin/master
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

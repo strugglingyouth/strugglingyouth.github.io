@@ -73,6 +73,8 @@
 
 
 
+  
+
 
   <link rel="alternate" href="/atom.xml" title="DevOps-田飞雨" type="application/atom+xml" />
 
@@ -86,19 +88,16 @@
 
 
 
-<meta name="description" content="###github 详细操作 : https://github.com/lavor-zl/Github-Git
-##git 高级教程： http://mp.weixin.qq.com/s?__biz=MzA3OTgyMDcwNg==&amp;amp;mid=2650625356&amp;amp;idx=1&amp;amp;sn=32e5a0550b08fab554edb5f31cfd54a5&amp;amp;scene=2&amp;am">
+<meta name="description" content="1、查看TCP连接状态netstat -nat |awk ‘{print $6}’|sort|uniq -c|sort -rnnetstat -n | awk ‘/^tcp/ {++S[$NF]};END {for(a in S) print a, S[a]}’netstat -n | awk ‘/^tcp/ {++state[$NF]}; END {for(key in state) print">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git 使用指南及高级技巧">
-<meta property="og:url" content="http://www.tianfeiyu.com/2016/07/14/git-使用指南及高级技巧/index.html">
+<meta property="og:title" content="常用Linux系统Debug命令">
+<meta property="og:url" content="http://www.tianfeiyu.com/2016/07/17/常用Linux系统Debug命令/index.html">
 <meta property="og:site_name" content="DevOps-田飞雨">
-<meta property="og:description" content="###github 详细操作 : https://github.com/lavor-zl/Github-Git
-##git 高级教程： http://mp.weixin.qq.com/s?__biz=MzA3OTgyMDcwNg==&amp;amp;mid=2650625356&amp;amp;idx=1&amp;amp;sn=32e5a0550b08fab554edb5f31cfd54a5&amp;amp;scene=2&amp;am">
-<meta property="og:updated_time" content="2016-07-15T07:08:01.000Z">
+<meta property="og:description" content="1、查看TCP连接状态netstat -nat |awk ‘{print $6}’|sort|uniq -c|sort -rnnetstat -n | awk ‘/^tcp/ {++S[$NF]};END {for(a in S) print a, S[a]}’netstat -n | awk ‘/^tcp/ {++state[$NF]}; END {for(key in state) print">
+<meta property="og:updated_time" content="2016-07-17T10:50:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git 使用指南及高级技巧">
-<meta name="twitter:description" content="###github 详细操作 : https://github.com/lavor-zl/Github-Git
-##git 高级教程： http://mp.weixin.qq.com/s?__biz=MzA3OTgyMDcwNg==&amp;amp;mid=2650625356&amp;amp;idx=1&amp;amp;sn=32e5a0550b08fab554edb5f31cfd54a5&amp;amp;scene=2&amp;am">
+<meta name="twitter:title" content="常用Linux系统Debug命令">
+<meta name="twitter:description" content="1、查看TCP连接状态netstat -nat |awk ‘{print $6}’|sort|uniq -c|sort -rnnetstat -n | awk ‘/^tcp/ {++S[$NF]};END {for(a in S) print a, S[a]}’netstat -n | awk ‘/^tcp/ {++state[$NF]}; END {for(key in state) print">
 
 
 
@@ -119,9 +118,9 @@
 
 
 
-  <link rel="canonical" href="http://www.tianfeiyu.com/2016/07/14/git-使用指南及高级技巧/"/>
+  <link rel="canonical" href="http://www.tianfeiyu.com/2016/07/17/常用Linux系统Debug命令/"/>
 
-  <title> git 使用指南及高级技巧 | DevOps-田飞雨 </title>
+  <title> 常用Linux系统Debug命令 | DevOps-田飞雨 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -241,7 +240,7 @@
             
             
               
-                git 使用指南及高级技巧
+                常用Linux系统Debug命令
               
             
           </h1>
@@ -253,8 +252,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-07-14T14:46:20+08:00" content="2016-07-14">
-              2016-07-14
+            <time itemprop="dateCreated" datetime="2016-07-17T18:49:58+08:00" content="2016-07-17">
+              2016-07-17
             </time>
           </span>
 
@@ -281,42 +280,33 @@
       
 
       
-        <p>###github 详细操作 : <a href="https://github.com/lavor-zl/Github-Git" target="_blank" rel="external">https://github.com/lavor-zl/Github-Git</a></p>
-<p>##git 高级教程： <a href="http://mp.weixin.qq.com/s?__biz=MzA3OTgyMDcwNg==&amp;mid=2650625356&amp;idx=1&amp;sn=32e5a0550b08fab554edb5f31cfd54a5&amp;scene=2&amp;srcid=0608JkN5HRfOV5POEyd2tClo&amp;from=timeline&amp;isappinstalled=0#wechat_redirect" target="_blank" rel="external">http://mp.weixin.qq.com/s?__biz=MzA3OTgyMDcwNg==&amp;mid=2650625356&amp;idx=1&amp;sn=32e5a0550b08fab554edb5f31cfd54a5&amp;scene=2&amp;srcid=0608JkN5HRfOV5POEyd2tClo&amp;from=timeline&amp;isappinstalled=0#wechat_redirect</a></p>
-<p>##Q:配置用户名和密码</p>
-<pre><code>git config --global user.name &quot;strugglingyouth&quot;
-git config --global user.email &quot;630441839@qq.com&quot;
-git config --list
-git config --global color.ui true
-</code></pre><p>##Q: 绑定远程分支，不用每次pull或push时指定</p>
-<pre><code>git config branch.master.remote origin
-git config branch.master.merge refs/heads/master
-</code></pre><p>##Q:合并远程分支到当前分支</p>
-<pre><code>git merge origin/master 
-# 或者
-$ git rebase origin/master
-</code></pre><p>##Q:删除追踪状态的文件</p>
-<pre><code>git rm --cached *.pyc
-</code></pre><p>##Q:今天使用github的pages功能搞了一个blog,用了github提供的主题,当我将其git clone下来的时候,出现:</p>
-<pre><code># On branch master
-# Changed but not updated:
-    #   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
-    #   (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
-    #
-    #       modified:   fonts/OpenSans-Bold-webfont.eot
-    #       modified:   fonts/OpenSans-Bold-webfont.svg
-    #       modified:   fonts/OpenSans-Bold-webfont.ttf
-    #       modified:   fonts/OpenSans-Bold-webfont.woff
-    #       modified:   fonts/OpenSans-BoldItalic-webfont.eot
-    #       modified:   fonts/OpenSans-BoldItalic-webfont.svg
-    #       modified:   fonts/OpenSans-BoldItalic-webfont.ttf
-    #       modified:   fonts/OpenSans-BoldItalic-webfont.woff
-    #       modified:   fonts/OpenSans-Italic-webfont.eot
-    #       modified:   fonts/OpenSans-Italic-webfont.svg
-    #       modified:   fonts/OpenSans-Italic-webfont.ttf
-    #       modified:   fonts/OpenSans-Italic-webfont.woff
-    #       modified:   fonts/OpenSans-Regular-webfont.eot
-    #       modified:   fonts/OpenSans-Regular-webfont.svg
+        <p>1、查看TCP连接状态<br>netstat -nat |awk ‘{print $6}’|sort|uniq -c|sort -rn<br>netstat -n | awk ‘/^tcp/ {++S[$NF]};END {for(a in S) print a, S[a]}’<br>netstat -n | awk ‘/^tcp/ {++state[$NF]}; END {for(key in state) print key,”\t”,state[key]}’<br>netstat -n | awk ‘/^tcp/ {++arr[$NF]};END {for(k in arr) print k,”\t”,arr[k]}’<br>netstat -n |awk ‘/^tcp/ {print $NF}’|sort|uniq -c|sort -rn<br>netstat -ant | awk ‘{print $NF}’ | grep -v ‘[a-z]’ | sort | uniq -c<br>netstat -nat |awk ‘{print $6}’|sort|uniq -c|sort -rn<br>netstat -n | awk ‘/^tcp/ {++S[$NF]};END {for(a in S) print a, S[a]}’<br>netstat -n | awk ‘/^tcp/ {++state[$NF]}; END {for(key in state) print key,”\t”,state[key]}’<br>netstat -n | awk ‘/^tcp/ {++arr[$NF]};END {for(k in arr) print k,”\t”,arr[k]}’<br>netstat -n |awk ‘/^tcp/ {print $NF}’|sort|uniq -c|sort -rn<br>netstat -ant | awk ‘{print $NF}’ | grep -v ‘[a-z]’ | sort | uniq -c</p>
+<p> 2、查找请求80端口最多的20个IP连接<br> netstat -anlp|grep 80|grep tcp|awk ‘{print $5}’|awk -F: ‘{print $1}’|sort|uniq -c|sort -nr|head -n20<br> netstat -ant |awk ‘/:80/{split($5,ip,”:”);++A[ip[1]]}END{for(i in A) print A,i}’ |sort -rn|head -n20<br> tcpdump -i eth0 -tnn dst port 80 -c 1000 | awk -F”.” ‘{print $1”.”$2”.”$3”.”$4}’ | sort | uniq -c | sort -nr |head -n 20</p>
+<p> 3、查找较多time_wait连接<br> netstat -n|grep TIME_WAIT|awk ‘{print $5}’|sort|uniq -c|sort -rn|head -n20</p>
+<p> 4、找查较多的SYN连接<br> netstat -an | grep SYN | awk ‘{print $5}’ | awk -F: ‘{print $1}’ | sort | uniq -c | sort -nr | more</p>
+<p> 5、根据端口列进程<br> netstat -ntlp | grep 80 | awk ‘{print $7}’ | cut -d/ -f1</p>
+<p> 6、获取Web访问前10位的ip地址<br> cat access.log|awk ‘{print $1}’|sort|uniq -c|sort -nr|head -n 10<br> cat access.log|awk ‘{counts[$(11)]+=1}; END {for(url in counts) print counts[url], url}’</p>
+<p> ​7、访问次数最多的文件或页面,取前20<br> cat access.log|awk ‘{print $11}’|sort|uniq -c|sort -nr|head -n 20</p>
+<p> 8、列出传输最大的几个rar文件<br> cat access.log|awk ‘{print $11}’|sort|uniq -c|sort -nr|head -n 20</p>
+<p>  9、列出输出大于200000byte(约200kb)的rar文件以及对应文件发生次数<br>  cat access.log |awk ‘($10 &gt; 200000 &amp;&amp; $7~/.rar/){print $7}’|sort -n|uniq -c|sort -nr|head -n 100</p>
+<p>  10、如果日志最后一列记录的是页面文件传输时间，则有列出到客户端最耗时的页面<br>  cat access.log |awk ‘($7~/.php/){print $NF “ “ $1 “ “ $4 “ “ $7}’|sort -nr|head -n 100<br>  cat access.log |awk ‘($7~/.php/){print $NF “ “ $1 “ “ $4 “ “ $7}’|sort -nr|head -n 100</p>
+<p>  11、列出最最耗时的页面(超过60秒的)的以及对应页面发生次数<br>  cat access.log |awk ‘($NF &gt; 60 &amp;&amp; $7~/.php/){print $7}’|sort -n|uniq -c|sort -nr|head -n 100</p>
+<p>   12、列出传输时间超过 30 秒的文件<br>   cat access.log |awk ‘($NF &gt; 30){print $7}’|sort -n|uniq -c|sort -nr|head -n 20</p>
+<p>   13、统计网站流量（G)<br>   cat access.log |awk ‘{sum+=$10} END {print sum/1024/1024/1024}’</p>
+<p>   14、统计404的连接<br>   awk ‘($9 ~/404/)’ access.log | awk ‘{print $9,$7}’ | sort</p>
+<p>   15、统计http status<br>   cat access.log |awk ‘{counts[$(9)]+=1}; END {for(code in counts) print code, counts[code]}’<br>   cat access.log |awk ‘{print $9}’|sort|uniq -c|sort -rn</p>
+<p>   16、查看是哪些爬虫在抓取内容<br>   tcpdump -i eth0 -l -s 0 -w - dst port 80 | strings | grep -i user-agent | grep -i -E ‘bot|crawler|slurp|spider’</p>
+<pre><code>17、查看数据库执行的sql语句
+tcpdump -i eth0 -s 0 -l -w - dst port 3306 | strings | egrep -i &apos;SELECT|UPDATE|DELETE|INSERT|SET|COMMIT|ROLLBACK|CREATE|DROP|ALTER|CALL&apos;
+
+18、按域统计流量
+zcat squid_access.log.tar.gz| awk &apos;{print $10,$7}&apos; |awk &apos;BEGIN{FS=&quot;[ /]&quot;}{trfc[$4]+=$1}END{for(domain in trfc){printf &quot;%s\t%d\n&quot;,domain,trfc[domain]}}&apos;
+
+19、调试命令
+strace -p pid
+
+20、磁盘性能
+iostat -x 1 10
 </code></pre>
       
     </div>
@@ -342,13 +332,13 @@ $ git rebase origin/master
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/07/14/git-使用指南及高级技巧/" rel="next" title="git 使用指南及高级技巧">
+                <i class="fa fa-chevron-left"></i> git 使用指南及高级技巧
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/07/17/常用Linux系统Debug命令/" rel="prev" title="常用Linux系统Debug命令">
-                常用Linux系统Debug命令 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

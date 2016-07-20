@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.tianfeiyu.com/"/>
-  <updated>2016-07-15T07:08:01.000Z</updated>
+  <updated>2016-07-17T10:50:48.000Z</updated>
   <id>http://www.tianfeiyu.com/</id>
   
   <author>
@@ -14,6 +14,51 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>常用Linux系统Debug命令</title>
+    <link href="http://www.tianfeiyu.com/2016/07/17/%E5%B8%B8%E7%94%A8Linux%E7%B3%BB%E7%BB%9FDebug%E5%91%BD%E4%BB%A4/"/>
+    <id>http://www.tianfeiyu.com/2016/07/17/常用Linux系统Debug命令/</id>
+    <published>2016-07-17T10:49:58.000Z</published>
+    <updated>2016-07-17T10:50:48.000Z</updated>
+    
+    <content type="html">&lt;p&gt;1、查看TCP连接状态&lt;br&gt;netstat -nat |awk ‘{print $6}’|sort|uniq -c|sort -rn&lt;br&gt;netstat -n | awk ‘/^tcp/ {++S[$NF]};END {for(a in S) print a, S[a]}’&lt;br&gt;netstat -n | awk ‘/^tcp/ {++state[$NF]}; END {for(key in state) print key,”\t”,state[key]}’&lt;br&gt;netstat -n | awk ‘/^tcp/ {++arr[$NF]};END {for(k in arr) print k,”\t”,arr[k]}’&lt;br&gt;netstat -n |awk ‘/^tcp/ {print $NF}’|sort|uniq -c|sort -rn&lt;br&gt;netstat -ant | awk ‘{print $NF}’ | grep -v ‘[a-z]’ | sort | uniq -c&lt;br&gt;netstat -nat |awk ‘{print $6}’|sort|uniq -c|sort -rn&lt;br&gt;netstat -n | awk ‘/^tcp/ {++S[$NF]};END {for(a in S) print a, S[a]}’&lt;br&gt;netstat -n | awk ‘/^tcp/ {++state[$NF]}; END {for(key in state) print key,”\t”,state[key]}’&lt;br&gt;netstat -n | awk ‘/^tcp/ {++arr[$NF]};END {for(k in arr) print k,”\t”,arr[k]}’&lt;br&gt;netstat -n |awk ‘/^tcp/ {print $NF}’|sort|uniq -c|sort -rn&lt;br&gt;netstat -ant | awk ‘{print $NF}’ | grep -v ‘[a-z]’ | sort | uniq -c&lt;/p&gt;
+&lt;p&gt; 2、查找请求80端口最多的20个IP连接&lt;br&gt; netstat -anlp|grep 80|grep tcp|awk ‘{print $5}’|awk -F: ‘{print $1}’|sort|uniq -c|sort -nr|head -n20&lt;br&gt; netstat -ant |awk ‘/:80/{split($5,ip,”:”);++A[ip[1]]}END{for(i in A) print A,i}’ |sort -rn|head -n20&lt;br&gt; tcpdump -i eth0 -tnn dst port 80 -c 1000 | awk -F”.” ‘{print $1”.”$2”.”$3”.”$4}’ | sort | uniq -c | sort -nr |head -n 20&lt;/p&gt;
+&lt;p&gt; 3、查找较多time_wait连接&lt;br&gt; netstat -n|grep TIME_WAIT|awk ‘{print $5}’|sort|uniq -c|sort -rn|head -n20&lt;/p&gt;
+&lt;p&gt; 4、找查较多的SYN连接&lt;br&gt; netstat -an | grep SYN | awk ‘{print $5}’ | awk -F: ‘{print $1}’ | sort | uniq -c | sort -nr | more&lt;/p&gt;
+&lt;p&gt; 5、根据端口列进程&lt;br&gt; netstat -ntlp | grep 80 | awk ‘{print $7}’ | cut -d/ -f1&lt;/p&gt;
+&lt;p&gt; 6、获取Web访问前10位的ip地址&lt;br&gt; cat access.log|awk ‘{print $1}’|sort|uniq -c|sort -nr|head -n 10&lt;br&gt; cat access.log|awk ‘{counts[$(11)]+=1}; END {for(url in counts) print counts[url], url}’&lt;/p&gt;
+&lt;p&gt; ​7、访问次数最多的文件或页面,取前20&lt;br&gt; cat access.log|awk ‘{print $11}’|sort|uniq -c|sort -nr|head -n 20&lt;/p&gt;
+&lt;p&gt; 8、列出传输最大的几个rar文件&lt;br&gt; cat access.log|awk ‘{print $11}’|sort|uniq -c|sort -nr|head -n 20&lt;/p&gt;
+&lt;p&gt;  9、列出输出大于200000byte(约200kb)的rar文件以及对应文件发生次数&lt;br&gt;  cat access.log |awk ‘($10 &amp;gt; 200000 &amp;amp;&amp;amp; $7~/.rar/){print $7}’|sort -n|uniq -c|sort -nr|head -n 100&lt;/p&gt;
+&lt;p&gt;  10、如果日志最后一列记录的是页面文件传输时间，则有列出到客户端最耗时的页面&lt;br&gt;  cat access.log |awk ‘($7~/.php/){print $NF “ “ $1 “ “ $4 “ “ $7}’|sort -nr|head -n 100&lt;br&gt;  cat access.log |awk ‘($7~/.php/){print $NF “ “ $1 “ “ $4 “ “ $7}’|sort -nr|head -n 100&lt;/p&gt;
+&lt;p&gt;  11、列出最最耗时的页面(超过60秒的)的以及对应页面发生次数&lt;br&gt;  cat access.log |awk ‘($NF &amp;gt; 60 &amp;amp;&amp;amp; $7~/.php/){print $7}’|sort -n|uniq -c|sort -nr|head -n 100&lt;/p&gt;
+&lt;p&gt;   12、列出传输时间超过 30 秒的文件&lt;br&gt;   cat access.log |awk ‘($NF &amp;gt; 30){print $7}’|sort -n|uniq -c|sort -nr|head -n 20&lt;/p&gt;
+&lt;p&gt;   13、统计网站流量（G)&lt;br&gt;   cat access.log |awk ‘{sum+=$10} END {print sum/1024/1024/1024}’&lt;/p&gt;
+&lt;p&gt;   14、统计404的连接&lt;br&gt;   awk ‘($9 ~/404/)’ access.log | awk ‘{print $9,$7}’ | sort&lt;/p&gt;
+&lt;p&gt;   15、统计http status&lt;br&gt;   cat access.log |awk ‘{counts[$(9)]+=1}; END {for(code in counts) print code, counts[code]}’&lt;br&gt;   cat access.log |awk ‘{print $9}’|sort|uniq -c|sort -rn&lt;/p&gt;
+&lt;p&gt;   16、查看是哪些爬虫在抓取内容&lt;br&gt;   tcpdump -i eth0 -l -s 0 -w - dst port 80 | strings | grep -i user-agent | grep -i -E ‘bot|crawler|slurp|spider’&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;17、查看数据库执行的sql语句
+tcpdump -i eth0 -s 0 -l -w - dst port 3306 | strings | egrep -i &amp;apos;SELECT|UPDATE|DELETE|INSERT|SET|COMMIT|ROLLBACK|CREATE|DROP|ALTER|CALL&amp;apos;
+
+18、按域统计流量
+zcat squid_access.log.tar.gz| awk &amp;apos;{print $10,$7}&amp;apos; |awk &amp;apos;BEGIN{FS=&amp;quot;[ /]&amp;quot;}{trfc[$4]+=$1}END{for(domain in trfc){printf &amp;quot;%s\t%d\n&amp;quot;,domain,trfc[domain]}}&amp;apos;
+
+19、调试命令
+strace -p pid
+
+20、磁盘性能
+iostat -x 1 10
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1、查看TCP连接状态&lt;br&gt;netstat -nat |awk ‘{print $6}’|sort|uniq -c|sort -rn&lt;br&gt;netstat -n | awk ‘/^tcp/ {++S[$NF]};END {for(a in S) print a, S[a]
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>git 使用指南及高级技巧</title>
